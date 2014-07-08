@@ -1,3 +1,4 @@
+#!/usr/bin/python2.7
 """
 Copyright (c) 2013, Arlei Silva
 All rights reserved.
