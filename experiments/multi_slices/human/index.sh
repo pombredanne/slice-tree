@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 #       Generates indexes for the synthetic graphs
 #       @Arlei Silva

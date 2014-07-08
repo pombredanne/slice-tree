@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python2
 """
 Copyright (c) 2013, Arlei Silva
 All rights reserved.

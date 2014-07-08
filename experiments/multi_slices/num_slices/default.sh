@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 #       Default parameters for experiments
 #       @Arlei Silva

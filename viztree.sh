@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 TREENAME=$1
 DATA=$2

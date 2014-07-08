@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 #bash run_compression.sh
 ./compute_time.sh
 ./compute_sse_reduction.sh

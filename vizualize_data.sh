@@ -1,3 +1,4 @@
+#!/bin/sh
 DATADIR=/home/petko/Dropbox/slice_tree/src/experiment
 SAMPLING=STBS
 #EXHAUSTIVE="-x"

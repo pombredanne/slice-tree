@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 #       Runs slice tree (several versions) for the synthetic graphs
 #       @Arlei Silva

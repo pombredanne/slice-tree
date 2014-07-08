@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 #       Prepares ST and WV timing results for multi-slices for plotting
 #       @Arlei Silva

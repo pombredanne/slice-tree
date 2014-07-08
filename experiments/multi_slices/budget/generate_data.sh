@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 #       Generates a number of synthetic graphs with given properties using a 
 #	synthetic graph generator
