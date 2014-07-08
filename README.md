@@ -1,2 +1,4 @@
-Graph-Compression
+Graph Compression
 =================
+
+A comparison of various graph compression algorithms.
