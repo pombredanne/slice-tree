@@ -27,10 +27,12 @@ make
 To generate a synthetic graph with 100000 nodes and 5 edges per node (on
 average):
 ```bash
-./graph_generator.py --output synthetic --num-vertices 100000 --num-edges 5 --num-partitions 32 --radius 2 --sse 200000 --reduction 100000
+./graph_generator.py --output synthetic --num-vertices 100000 --num-edges 5 \
+    --num-partitions 32 --radius 2 --sse 200000 --reduction 100000
 ```
 
 To compress the graph (using 4 cores):
 ```bash
-./graph_compression --graph synthetic.graph -v synthetic.data -s synthetic.sizes --maxradius 2 -t 4
+./graph_compression --graph synthetic.graph --values synthetic.data \
+    --partsizes synthetic.sizes --maxradius 2 --numthreads 4
 ```
