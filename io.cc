@@ -46,21 +46,21 @@ void Parameters::print_usage()
 {
 	std::cout << "Usage: ./graph_compression [OPTIONS]..." << std::endl;
 	std::cout << "Compresses the values in a graph using the specified algorithm" << std::endl;
-	std::cout << " -g, --graph		input graph file" << std::endl;
-	std::cout << " -v, --value		input values file" << std::endl;
-	std::cout << " -o, --output		output file name" << std::endl;
-	std::cout << " -c, --compression	compression algorithm" << std::endl;
-	std::cout << " -b, --budget		one or more budget values (bytes)" << std::endl;
-	std::cout << " -p, --numpart		one or more numbers of partitions" << std::endl;
-	std::cout << " -n, --sampling-rate	sampling rate" << std::endl;
-	std::cout << " -s, --partsizes		file with pre-computed partition sizes" << std::endl;
-	std::cout << " -t, --numthreads		number of threads to be used" << std::endl;
-	std::cout << " -d, --delta		confidence parameter for compression" << std::endl;
-	std::cout << " -m, --maxradius		max radius for slice tree compression" << std::endl;
-	std::cout << " -r, --rho		approximation constant" << std::endl;
-	std::cout << " -e, --directed		if the input graph is directed" << std::endl;
-	std::cout << " -i, --print-tree		prints the ST (only when comrression is ST/STUS/STBS) " << std::endl;
-	std::cout << " -x, --exhaustive-split		Exhaustively compares slices in all partitions (ST/STBS/STUS only). Significantly slower when set. " << std::endl;
+	std::cout << " -g, --graph             input graph file" << std::endl;
+	std::cout << " -v, --values            input values file" << std::endl;
+	std::cout << " -o, --output            output file name" << std::endl;
+	std::cout << " -c, --compression	   compression algorithm" << std::endl;
+	std::cout << " -b, --budget            one or more budget values (bytes)" << std::endl;
+	std::cout << " -p, --numpart		   one or more numbers of partitions" << std::endl;
+	std::cout << " -n, --sampling-rate     sampling rate" << std::endl;
+	std::cout << " -s, --partsizes         file with pre-computed partition sizes" << std::endl;
+	std::cout << " -t, --numthreads        number of threads to be used" << std::endl;
+	std::cout << " -d, --delta             confidence parameter for compression" << std::endl;
+	std::cout << " -m, --maxradius         max radius for slice tree compression" << std::endl;
+	std::cout << " -r, --rho               approximation constant" << std::endl;
+	std::cout << " -e, --directed          if the input graph is directed" << std::endl;
+	std::cout << " -i, --print-tree        prints the ST (only when comrression is ST/STUS/STBS) " << std::endl;
+	std::cout << " -x, --exhaustive-split  Exhaustively compares slices in all partitions (ST/STBS/STUS only). Significantly slower when set. " << std::endl;
 }
 
 /**
@@ -99,18 +99,17 @@ bool Parameters::read(int argc, char** argv) throw (InvalidParameterSettingExcep
 		}
 
 		ops >> GetOpt::Option('g', "graph", graph_file_name, "")
-		>> GetOpt::Option('v', "values", values_file_name, "")
-		>> GetOpt::Option('o', "output", output_file_name, "")
-		>> GetOpt::Option('c', "compression", compression_algorithm, "")
-		>> GetOpt::Option('b', "budget", budget)
-		>> GetOpt::Option('p', "numpart", num_partitions)
-		>> GetOpt::Option('n', "sampling-rate", sampling_rate)
-		>> GetOpt::Option('s', "partsizes", partition_sizes_file_name)
-		>> GetOpt::Option('t', "numthreads", num_threads)
-		>> GetOpt::Option('d', "delta", delta)
-		>> GetOpt::Option('m', "maxradius", max_radius)
-		>> GetOpt::Option('r', "rho", rho)
-		;
+		    >> GetOpt::Option('v', "values", values_file_name, "")
+		    >> GetOpt::Option('o', "output", output_file_name, "")
+		    >> GetOpt::Option('c', "compression", compression_algorithm, "")
+		    >> GetOpt::Option('b', "budget", budget)
+		    >> GetOpt::Option('p', "numpart", num_partitions)
+		    >> GetOpt::Option('n', "sampling-rate", sampling_rate)
+		    >> GetOpt::Option('s', "partsizes", partition_sizes_file_name)
+		    >> GetOpt::Option('t', "numthreads", num_threads)
+		    >> GetOpt::Option('d', "delta", delta)
+		    >> GetOpt::Option('m', "maxradius", max_radius)
+		    >> GetOpt::Option('r', "rho", rho);
 	}
 	catch(GetOpt::GetOptEx& e)
 	{
