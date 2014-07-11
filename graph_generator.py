@@ -44,14 +44,13 @@ class Graph(object):
         self.tree = []
 
     def new_node(self, partition):
-        node = {}
-        node["left"] = -1
-        node["right"] = -1
-        node["average"] = 0
-        node["partition"] = partition
-        node["size"] = 0
-
-        return node
+        return {
+            "left": -1,
+            "right": -1,
+            "average": 0,
+            "partition": partition,
+            "size": 0
+        }
 
     def set_graph(self):
         G =  networkx.barabasi_albert_graph(self.num_vertices, self.num_edges)
@@ -109,11 +108,12 @@ class Graph(object):
         for i in range(0, self.num_vertices):
             self.partition_assignments.append(0)
 
-        partition = {}
-        partition["average"] = 0
-        partition["center"] = -1
-        partition["size"] = self.num_vertices
-        partition["node"] = 0
+        partition = {
+            "average": 0,
+            "center":  -1,
+            "size":    self.num_vertices,
+            "node":    0
+        }
         self.tree.append(self.new_node(0))
         self.tree[0]["size"] = self.num_vertices
 

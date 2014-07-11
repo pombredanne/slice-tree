@@ -2,7 +2,6 @@
 
 import sys
 import argparse
-from graphviz import Digraph
 
 parser = argparse.ArgumentParser(
     description="Generates a GraphViz file from *.graph and *.data files."
@@ -12,22 +11,31 @@ parser.add_argument("--data", type=argparse.FileType("r"),
 parser.add_argument("--graph", type=argparse.FileType("r"),
     help="Graph input file.")
 
+gv_header = """digraph {
+    graph [size="64,40"]
+    node [fillcolor=lightskyblue2 label="" nodesep=1.0 ranksep=1.0 shape=circle style=filled]
+    edge [weight=1.5]
+"""
+
+gv_footer = "}"
+
 if __name__ == "__main__":
     args = parser.parse_args()
 
-    dot = Digraph(
-        graph_attr={'size':'64,40'},
-        node_attr={'shape':'circle', 'label':'', 'style':'filled',
-            'fillcolor':'lightskyblue2', 'nodesep':'1.0', 'ranksep':'1.0'},
-        edge_attr={'weight':'1.5'}
-        )
+    f = sys.stdout
 
-    for line in args.data:
-        node, value = line.split(",", 1)
-        dot.node(node)
-    
-    for line in args.graph:
-        a, b = line.split(",", 1)
-        dot.edge(a, b)
+    try:
+        f.write(gv_header)
 
-    sys.stdout.write(dot.source)
+        # TODO: Escape node names
+        for line in args.data:
+            node, value = line.strip().split(",", 1)
+            f.write("    " + node + "\n")
+
+        for line in args.graph:
+            a, b = line.strip().split(",", 1)
+            f.write("    " + a + " -> " + b + "\n")
+
+        f.write(gv_footer)
+    except OSError:
+        pass
