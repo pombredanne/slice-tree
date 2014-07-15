@@ -19,7 +19,7 @@ TREENAME=${DATA}_${PARTITIONS}_alg-${SAMPLING}_rho-${RHO}_delta-${DELTA}_samples
 date
 echo ./graph_compression -i $EXHAUSTIVE -c $SAMPLING -p $PARTITIONS -n $SAMPLES -m 2 -r $RHO -d $DELTA -t 8 -g $GRAPH -v $DATA -s $INDEX
 ./graph_compression -i -c $SAMPLING -p $PARTITIONS -n $SAMPLES -m 2 -r $RHO -d $DELTA -t 8 -g $GRAPH -v $DATA -s $INDEX > $TREENAME.tree
-./viztree.sh $TREENAME $DATA $NAMES
+./viztree $TREENAME $DATA $NAMES
 commentT
 
 #<<commentDBLP
@@ -35,7 +35,7 @@ TREENAME=${DATA}_${PARTITIONS}_alg-${SAMPLING}_rho-${RHO}_delta-${DELTA}_samples
 date
 echo ./graph_compression -i $EXHAUSTIVE -c $SAMPLING -p $PARTITIONS -n $SAMPLES -m 2 -r $RHO -d $DELTA -t 8 -g $GRAPH -v $DATA -s $INDEX
 ./graph_compression -i -c $SAMPLING -p $PARTITIONS -n $SAMPLES -m 2 -r $RHO -d $DELTA -t 8 -g $GRAPH -v $DATA -s $INDEX > $TREENAME.tree
-./viztree.sh $TREENAME $DATA $NAMES
+./viztree $TREENAME $DATA $NAMES
 #commentDBLP
 
 <<commentSYN
@@ -51,7 +51,7 @@ TREENAME=${DATA}_${PARTITIONS}_alg-${SAMPLING}_rho-${RHO}_delta-${DELTA}_samples
 date
 echo ./graph_compression -i $EXHAUSTIVE -c $SAMPLING -p $PARTITIONS -n $SAMPLES -m 2 -r $RHO -d $DELTA -t 8 -g $GRAPH -v $DATA -s $INDEX
 ./graph_compression -i -c $SAMPLING -p $PARTITIONS -n $SAMPLES -m 2 -r $RHO -d $DELTA -t 8 -g $GRAPH -v $DATA -s $INDEX > $TREENAME.tree
-./viztree.sh $TREENAME $DATA $NAMES
+./viztree $TREENAME $DATA $NAMES
 commentSYN
 
 <<commentWIKI
@@ -70,7 +70,7 @@ TREENAME=${DATA}_${PARTITIONS}_alg-${SAMPLING}_rho-${RHO}_delta-${DELTA}_samples
 date
 #echo ./graph_compression -i $EXHAUSTIVE -c $SAMPLING -p $PARTITIONS -n $SAMPLES -m 2 -r $RHO -d $DELTA -t 8 -g $GRAPH -v $DATA -s $INDEX
 #./graph_compression -i -c $SAMPLING -p $PARTITIONS -n $SAMPLES -m 2 -r $RHO -d $DELTA -t 8 -g $GRAPH -v $DATA -s $INDEX > $TREENAME.tree
-./viztree.sh $TREENAME $DATA $NAMES
+./viztree $TREENAME $DATA $NAMES
 
 done
 
