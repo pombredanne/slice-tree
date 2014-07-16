@@ -31,8 +31,33 @@ average):
     --num-partitions 32 --radius 2 --sse 200000 --reduction 100000
 ```
 
-To compress the graph (using 4 cores):
+To compress the graph with the Slice Tree method using 8 cores:
 ```bash
-./graph_compression --graph synthetic.graph --values synthetic.data \
-    --partsizes synthetic.sizes --maxradius 2 --numthreads 4
+./graph_compression --compression ST \
+    --values synthetic.data --graph synthetic.graph --partsizes synthetic.index \
+    --maxradius 2 --numpart 20 --numthreads 8
 ```
+
+To compress the graph with the Slice Tree using sampling:
+```bash
+./graph_compression --compression STBS \
+    --values synthetic.data --graph synthetic.graph --partsizes synthetic.index \
+    --maxradius 2 --numpart 20 --numthreads 8 --sampling-rate 0.01 --rho 0.9 --delta 0.1
+```
+
+To generate a tree, add the `--print-tree` option:
+```bash
+./graph_compression --compression STBS \
+    --values synthetic.data --graph synthetic.graph --partsizes synthetic.index \
+    --maxradius 2 --numpart 20 --numthreads 8 --sampling-rate 0.01 --rho 0.9 --delta 0.1 \
+    --print-tree > synthetic.tree
+```
+
+This can be used to generate an image with [GraphViz][]:
+
+```bash
+./viztree synthetic synthetic.data
+eog synthetic.svg &
+```
+
+[GraphViz]: http://www.graphviz.org
