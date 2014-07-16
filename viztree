@@ -101,4 +101,5 @@ sed -e 's/^[ ]*//g' $TREENAME.tree | gawk -F " " -v anfn=$NAMES -v dfn=$DATA -v 
     }
     print "}" > ofn }'
 
-dot -Tsvg $TREENAME.tree.dot > $TREENAME.svg; eog $TREENAME.svg &
+dot -Tsvg $TREENAME.tree.dot > $TREENAME.svg
+#eog $TREENAME.svg &
