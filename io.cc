@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 **/
 
 /**
- *	FILE io.cc: Implementation of I/O operations.
+ *  FILE io.cc: Implementation of I/O operations.
 **/
 
 /*my includes*/
@@ -44,81 +44,81 @@ std::vector<std::string> Parameters::compression_algorithms;
 **/
 void Parameters::print_usage()
 {
-	std::cout << "Usage: ./graph_compression [OPTIONS]..." << std::endl;
-	std::cout << "Compresses the values in a graph using the specified algorithm" << std::endl;
-	std::cout << " -g, --graph             input graph file" << std::endl;
-	std::cout << " -v, --values            input values file" << std::endl;
-	std::cout << " -o, --output            output file name" << std::endl;
-	std::cout << " -c, --compression	   compression algorithm" << std::endl;
-	std::cout << " -b, --budget            one or more budget values (bytes)" << std::endl;
-	std::cout << " -p, --numpart		   one or more numbers of partitions" << std::endl;
-	std::cout << " -n, --sampling-rate     sampling rate" << std::endl;
-	std::cout << " -s, --partsizes         file with pre-computed partition sizes" << std::endl;
-	std::cout << " -t, --numthreads        number of threads to be used" << std::endl;
-	std::cout << " -d, --delta             confidence parameter for compression" << std::endl;
-	std::cout << " -m, --maxradius         max radius for slice tree compression" << std::endl;
-	std::cout << " -r, --rho               approximation constant" << std::endl;
-	std::cout << " -e, --directed          if the input graph is directed" << std::endl;
-	std::cout << " -i, --print-tree        prints the ST (only when comrression is ST/STUS/STBS) " << std::endl;
-	std::cout << " -x, --exhaustive-split  Exhaustively compares slices in all partitions (ST/STBS/STUS only). Significantly slower when set. " << std::endl;
+    std::cout << "Usage: ./graph_compression [OPTIONS]..." << std::endl;
+    std::cout << "Compresses the values in a graph using the specified algorithm" << std::endl;
+    std::cout << " -g, --graph             input graph file" << std::endl;
+    std::cout << " -v, --values            input values file" << std::endl;
+    std::cout << " -o, --output            output file name" << std::endl;
+    std::cout << " -c, --compression       compression algorithm" << std::endl;
+    std::cout << " -b, --budget            one or more budget values (bytes)" << std::endl;
+    std::cout << " -p, --numpart           one or more numbers of partitions" << std::endl;
+    std::cout << " -n, --sampling-rate     sampling rate" << std::endl;
+    std::cout << " -s, --partsizes         file with pre-computed partition sizes" << std::endl;
+    std::cout << " -t, --numthreads        number of threads to be used" << std::endl;
+    std::cout << " -d, --delta             confidence parameter for compression" << std::endl;
+    std::cout << " -m, --maxradius         max radius for slice tree compression" << std::endl;
+    std::cout << " -r, --rho               approximation constant" << std::endl;
+    std::cout << " -e, --directed          if the input graph is directed" << std::endl;
+    std::cout << " -i, --print-tree        prints the ST (only when comrression is ST/STUS/STBS) " << std::endl;
+    std::cout << " -x, --exhaustive-split  Exhaustively compares slices in all partitions (ST/STBS/STUS only). Significantly slower when set. " << std::endl;
 }
 
 /**
  * Reads the input parameters for the compression
  * @param argc size of the command line
  * @param argv string command line
- * @return 
+ * @return
  * @throws invalidParameterSettingException
 **/
 bool Parameters::read(int argc, char** argv) throw (InvalidParameterSettingException)
 {
-	InvalidParameterSettingException invalid_parameters;
-	
-	try
-	{
-		GetOpt::GetOpt_pp ops(argc, argv);
- 
-		if (ops >> GetOpt::OptionPresent('e', "directed"))
-		{
-			directed = true;
-		}
-		if (ops >> GetOpt::OptionPresent('i', "print-tree"))
-		{
-			print_tree = true;
-		}
-		if (ops >> GetOpt::OptionPresent('x', "exhaustive-split"))
-		{
-			exhaustive_split = true;
-		}
-		
-		if (ops >> GetOpt::OptionPresent('h', "help"))
-		{
-			print_usage();
-			
-			return false;
-		}
+    InvalidParameterSettingException invalid_parameters;
 
-		ops >> GetOpt::Option('g', "graph", graph_file_name, "")
-		    >> GetOpt::Option('v', "values", values_file_name, "")
-		    >> GetOpt::Option('o', "output", output_file_name, "")
-		    >> GetOpt::Option('c', "compression", compression_algorithm, "")
-		    >> GetOpt::Option('b', "budget", budget)
-		    >> GetOpt::Option('p', "numpart", num_partitions)
-		    >> GetOpt::Option('n', "sampling-rate", sampling_rate)
-		    >> GetOpt::Option('s', "partsizes", partition_sizes_file_name)
-		    >> GetOpt::Option('t', "numthreads", num_threads)
-		    >> GetOpt::Option('d', "delta", delta)
-		    >> GetOpt::Option('m', "maxradius", max_radius)
-		    >> GetOpt::Option('r', "rho", rho);
-	}
-	catch(GetOpt::GetOptEx& e)
-	{
-		std::cerr << "Fatal error while parsing the command line parameters!" << std::endl;
-		std::cerr << "Try \'./graph_compression --help\' for more information." << std::endl;
-		throw invalid_parameters;
-	}
+    try
+    {
+        GetOpt::GetOpt_pp ops(argc, argv);
 
-	return true;
+        if (ops >> GetOpt::OptionPresent('e', "directed"))
+        {
+            directed = true;
+        }
+        if (ops >> GetOpt::OptionPresent('i', "print-tree"))
+        {
+            print_tree = true;
+        }
+        if (ops >> GetOpt::OptionPresent('x', "exhaustive-split"))
+        {
+            exhaustive_split = true;
+        }
+
+        if (ops >> GetOpt::OptionPresent('h', "help"))
+        {
+            print_usage();
+
+            return false;
+        }
+
+        ops >> GetOpt::Option('g', "graph", graph_file_name, "")
+            >> GetOpt::Option('v', "values", values_file_name, "")
+            >> GetOpt::Option('o', "output", output_file_name, "")
+            >> GetOpt::Option('c', "compression", compression_algorithm, "")
+            >> GetOpt::Option('b', "budget", budget)
+            >> GetOpt::Option('p', "numpart", num_partitions)
+            >> GetOpt::Option('n', "sampling-rate", sampling_rate)
+            >> GetOpt::Option('s', "partsizes", partition_sizes_file_name)
+            >> GetOpt::Option('t', "numthreads", num_threads)
+            >> GetOpt::Option('d', "delta", delta)
+            >> GetOpt::Option('m', "maxradius", max_radius)
+            >> GetOpt::Option('r', "rho", rho);
+    }
+    catch(GetOpt::GetOptEx& e)
+    {
+        std::cerr << "Fatal error while parsing the command line parameters!" << std::endl;
+        std::cerr << "Try \'./graph_compression --help\' for more information." << std::endl;
+        throw invalid_parameters;
+    }
+
+    return true;
 }
 
 /**
@@ -129,16 +129,16 @@ bool Parameters::read(int argc, char** argv) throw (InvalidParameterSettingExcep
 **/
 void Parameters::print()
 {
-	std::cout << "graph: " << graph_file_name << std::endl;
-	std::cout << "values: " << values_file_name << "\n";
-	std::cout << "compression algorithm: " << compression_algorithm << std::endl;
-	std::cout << "output: " << output_file_name << std::endl;
-	std::cout << "budget: " << budget << std::endl;
-	std::cout << "num_partitions: " << num_partitions << std::endl;
+    std::cout << "graph: " << graph_file_name << std::endl;
+    std::cout << "values: " << values_file_name << "\n";
+    std::cout << "compression algorithm: " << compression_algorithm << std::endl;
+    std::cout << "output: " << output_file_name << std::endl;
+    std::cout << "budget: " << budget << std::endl;
+    std::cout << "num_partitions: " << num_partitions << std::endl;
 }
 
 /**
- * Sets the list of valid compression algorithms, so that 
+ * Sets the list of valid compression algorithms, so that
  * an algorithm given as input can be checked
  * @param algorithms vector with the valid algorithm identifiers
  * @return
@@ -146,6 +146,6 @@ void Parameters::print()
  **/
 void Parameters::set_compression_algorithms(std::vector<std::string>& algorithms)
 {
-	compression_algorithms = algorithms;
+    compression_algorithms = algorithms;
 }
 

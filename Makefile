@@ -11,12 +11,12 @@ all: graph_compression
 graph_compression: $(GP_OBJS)
 	@echo ""
 	@echo " --- graph_compression ---"
-	@$(CC) $(GP_OBJS) -o graph_compression 
+	@$(CC) $(GP_OBJS) -o graph_compression
 	@echo ""
 
 %.o: %.cc %.h
 	@echo " --- COMPILING OBJECT \"$@\""
-	@$(CC) $< -c 
+	@$(CC) $< -c
 
 clean:
 	$(RM) graph_compression *.o

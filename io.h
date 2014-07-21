@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 **/
 
 /**
- *	FILE io.h: Definitions of classes related to I/O.
+ *  FILE io.h: Definitions of classes related to I/O.
 **/
 
 #ifndef IO_H
@@ -34,10 +34,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 **/
 class InvalidParameterSettingException: public std::exception
 {
-	virtual const char* what() const throw()
-	{
-		return "Invalid input parameter setting!";
-	}
+    virtual const char* what() const throw()
+    {
+        return "Invalid input parameter setting!";
+    }
 };
 
 /**
@@ -45,60 +45,60 @@ class InvalidParameterSettingException: public std::exception
 **/
 class Parameters
 {
-	public:
-		/*Input parameters*/
-		static std::string graph_file_name;
-		static std::string values_file_name;
-		static unsigned int budget;
-		static unsigned int num_partitions;
-		static std::string compression_algorithm;
-		static std::string output_file_name;
-		static double sampling_rate;
-		static std::string partition_sizes_file_name;
-		static unsigned int num_threads;
-		static double delta;
-		static unsigned int max_radius;
-		static double rho;
-		static bool directed;
- 		static bool print_tree;
-		static bool exhaustive_split;
-		
-		/*List of valid compression algorithms for checking*/
-		static std::vector < std::string > compression_algorithms;
-		
-		/**
-		 * Reads the input parameters for the compression
-		 * @param argc size of the command line
-		 * @param argv string command line
-		 * @return 
-		 * @throws invalidParameterSettingException
-		**/
-		static bool read(int argc, char** argv) throw (InvalidParameterSettingException);
-		
-		/**
-		 * Prints the input parameters on the terminal
-		 * @param
-		 * @return
-		 * @throws
-		**/
-		static void print();
+    public:
+        /*Input parameters*/
+        static std::string graph_file_name;
+        static std::string values_file_name;
+        static unsigned int budget;
+        static unsigned int num_partitions;
+        static std::string compression_algorithm;
+        static std::string output_file_name;
+        static double sampling_rate;
+        static std::string partition_sizes_file_name;
+        static unsigned int num_threads;
+        static double delta;
+        static unsigned int max_radius;
+        static double rho;
+        static bool directed;
+        static bool print_tree;
+        static bool exhaustive_split;
 
-		/**
-		 * Sets the list of valid compression algorithms, so that 
-		 * an algorithm given as input can be checked
-		 * @param algorithms vector with the valid algorithm identifiers
-		 * @return
-		 * @throws
-		 **/
-		static void set_compression_algorithms(std::vector<std::string>& algorithms);
+        /*List of valid compression algorithms for checking*/
+        static std::vector < std::string > compression_algorithms;
 
-		/**
-		 * Prints the usage of this program
-		 * @param
-		 * @return
-		 * @throws
-		**/
-		static void print_usage();
+        /**
+         * Reads the input parameters for the compression
+         * @param argc size of the command line
+         * @param argv string command line
+         * @return
+         * @throws invalidParameterSettingException
+        **/
+        static bool read(int argc, char** argv) throw (InvalidParameterSettingException);
+
+        /**
+         * Prints the input parameters on the terminal
+         * @param
+         * @return
+         * @throws
+        **/
+        static void print();
+
+        /**
+         * Sets the list of valid compression algorithms, so that
+         * an algorithm given as input can be checked
+         * @param algorithms vector with the valid algorithm identifiers
+         * @return
+         * @throws
+         **/
+        static void set_compression_algorithms(std::vector<std::string>& algorithms);
+
+        /**
+         * Prints the usage of this program
+         * @param
+         * @return
+         * @throws
+        **/
+        static void print_usage();
 };
 
 #endif

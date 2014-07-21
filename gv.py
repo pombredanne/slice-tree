@@ -11,10 +11,14 @@ parser.add_argument("--data", type=argparse.FileType("r"),
 parser.add_argument("--graph", type=argparse.FileType("r"),
     help="Graph input file.")
 
+#gv_header = """digraph {
+    #graph [size="64,40"]
+    #node [fillcolor=lightskyblue2 label="" nodesep=1.0 ranksep=1.0 shape=circle style=filled]
+    #edge [weight=1.5]
+#"""
+
 gv_header = """digraph {
-    graph [size="64,40"]
-    node [fillcolor=lightskyblue2 label="" nodesep=1.0 ranksep=1.0 shape=circle style=filled]
-    edge [weight=1.5]
+    node [fillcolor=lightskyblue2 label="" shape=circle style=filled]
 """
 
 gv_footer = "}"
@@ -30,7 +34,7 @@ if __name__ == "__main__":
         # TODO: Escape node names
         for line in args.data:
             node, value = line.strip().split(",", 1)
-            f.write("    " + node + "\n")
+            f.write('    "%s" [label="%s"]\n' % (node, value))
 
         for line in args.graph:
             a, b = line.strip().split(",", 1)

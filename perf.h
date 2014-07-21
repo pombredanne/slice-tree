@@ -23,86 +23,86 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include <sys/resource.h>
 
 /**
- *	Simple class for computing execution time of sections of code. 
+ *  Simple class for computing execution time of sections of code.
 **/
 
 class ExecTime
 {
-	public:
-		/**
-		  * Starts the counter
-		  * @param
-		  * @return
-		  * @throws
-		 **/
-		ExecTime()
-		{
-		    time = 0;
-		}
-		
-		/**
-		  * Destructor
-		  * @param
-		  * @return
-		  * @throws
-		 **/
-		virtual ~ExecTime(){};
+    public:
+        /**
+          * Starts the counter
+          * @param
+          * @return
+          * @throws
+         **/
+        ExecTime()
+        {
+            time = 0;
+        }
 
-		/**
-		  * Starts the counter
-		  * @param
-		  * @return
-		  * @throws
-		 **/
-		inline void start()
-		{
-			gettimeofday (&start_time, NULL);
-		}
-		
-		/**
-		  * Resets the counter
-		  * @param
-		  * @return
-		  * @throws
-		 **/
-		inline void reset()
-		{
-			time = 0;
-		}
-		
-		
-		/**
-		  * Stops the counter
-		  * @param
-		  * @return
-		  * @throws
-		 **/
-		inline void stop()
-		{
-			gettimeofday (&end_time, NULL);
-			double tmp = ((double) end_time.tv_sec + (double) end_time.tv_usec / 1000000) - ((double) start_time.tv_sec + (double) start_time.tv_usec / 1000000);
+        /**
+          * Destructor
+          * @param
+          * @return
+          * @throws
+         **/
+        virtual ~ExecTime(){};
 
-			if(tmp > 0)
-			{
-				time += tmp;
-			}
-		}
-		
-		/**
-		  * Returns the time in seconds
-		  * @param
-		  * @return
-		  * @throws
-		 **/
-		const inline double get_seconds() const
-		{
-			return time;
-		}
+        /**
+          * Starts the counter
+          * @param
+          * @return
+          * @throws
+         **/
+        inline void start()
+        {
+            gettimeofday (&start_time, NULL);
+        }
 
-	private:
-	        double time;
-		struct timeval start_time;
-		struct timeval end_time;
+        /**
+          * Resets the counter
+          * @param
+          * @return
+          * @throws
+         **/
+        inline void reset()
+        {
+            time = 0;
+        }
+
+
+        /**
+          * Stops the counter
+          * @param
+          * @return
+          * @throws
+         **/
+        inline void stop()
+        {
+            gettimeofday (&end_time, NULL);
+            double tmp = ((double) end_time.tv_sec + (double) end_time.tv_usec / 1000000) - ((double) start_time.tv_sec + (double) start_time.tv_usec / 1000000);
+
+            if(tmp > 0)
+            {
+                time += tmp;
+            }
+        }
+
+        /**
+          * Returns the time in seconds
+          * @param
+          * @return
+          * @throws
+         **/
+        const inline double get_seconds() const
+        {
+            return time;
+        }
+
+    private:
+            double time;
+        struct timeval start_time;
+        struct timeval end_time;
 
 };
 
