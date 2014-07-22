@@ -1537,7 +1537,7 @@ SliceTree::~SliceTree()
 
 /**
  * Extends a slice tree node. A non-leaf node from slice tree recovered from a
- *serialized file is extended with left and right children.
+ * serialized file is extended with left and right children.
  * @param
  * @return
  * @throws
@@ -1654,8 +1654,8 @@ void SliceTree::extend_tree()
 }
 
 /**
- * Clears all the partition for a st_node and does it
- * recursivelly for the children nodes.
+ * Clears all the partition for a st_node and does it recursively for the
+ * children nodes.
  * @param
  * @return
  * @throws

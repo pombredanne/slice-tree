@@ -169,7 +169,7 @@ class GraphCompressionAlgorithm
          * @return
          * @throws
         **/
-        virtual void set_compressed_values(){};
+        virtual void set_compressed_values() {}
 
         /**
          * Returns the value of a vertex as it would be compressed.
@@ -224,7 +224,9 @@ class SliceTree: public GraphCompressionAlgorithm
          * @throws
         **/
         SliceTree(const std::string& input_file_name, Graph& graph):
-            GraphCompressionAlgorithm(input_file_name, graph){;}
+            GraphCompressionAlgorithm(input_file_name, graph)
+        {
+        }
 
         /**
          * Builds a slice tree from the serialized content of a file
@@ -508,10 +510,19 @@ class SliceTreeSamp: public SliceTree
         **/
         virtual ~SliceTreeSamp(){;}
     protected:
+        // Confidence parameter.
         double delta;
+
+        // Range of node values (i.e., the maximum difference in node values).
         double theta;
+
+        // The percentage of nodes to sample from the entire graph on each
+        // iteration.
         double sampling_rate;
+
+        // Approximation constant.
         double rho;
+
         static unsigned int num_pruned_bound_1;
         static unsigned int num_pruned_bound_2;
         static unsigned int num_pruned_bound_3;
