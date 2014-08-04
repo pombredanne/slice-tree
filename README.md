@@ -1,6 +1,6 @@
-# Graph Compression
+# Slice Tree
 
-A comparison of various graph compression algorithms.
+An implementation of the Slice Tree algorithm to summarize a network.
 
 # Introduction
 
